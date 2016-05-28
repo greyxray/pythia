@@ -122,6 +122,17 @@ PYTHIA-MSTP     91              1
 PYTHIA-CKIN     3            2.5    
 PYTHIA-MSTP     18               1                                             
 *
+*IAN
+*C...Use minimal W to set minimum photon energy fractions.
+*      ECM=SQRT(4D0*EE*EP)
+*      CKIN(61)=(CKIN(77)/ECM)**2
+*      CKIN(73)=CKIN(61)
+*ecm=sqrt(101,200)
+*ckin61 = 0.0002470355731
+*ckin73 = 0.0002470355731                                           
+PYTHIA-CKIN     61            0.0002470355731                                              
+PYTHIA-CKIN     73            0.0002470355731   
+*
 *Ian
 *C...Set minimum photon virtuality.
 PYTHIA-CKIN 65 4.0 
