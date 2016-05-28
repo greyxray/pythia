@@ -4,6 +4,7 @@ Nfiles=10
 
 nameFz=
 nameZdi=
+rm -rf /nfs/dust/zeus/group/glushenko/pythia/pythia_$Nfiles
 mkdir /nfs/dust/zeus/group/glushenko/pythia/pythia_$Nfiles
 nfspass=/nfs/dust/zeus/group/glushenko/pythia/pythia_$Nfiles/
 
