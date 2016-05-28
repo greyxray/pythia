@@ -37,7 +37,7 @@ PYTHIA-PMMTM   920.
 * PYTHIA-MSFLAG   4                                                             
 * PYTHIA-MSFLAG   0       
 *MSFLAG is 2 for dir and 0 for res photoproduction                                                      
-*****PYTHIA-MSFLAG   2                                                               
+PYTHIA-MSFLAG   2                                                               
 * .. Use Heracles for radiative corrections                                     
 *    (only applies for gamma p mode)                                            
 * 0 = off 1 = on                                                                
@@ -47,7 +47,7 @@ PYTHIA-YMIN     0.01
 * .. Y range for multiple scattering                                            
 PYTHIA-YMAX     1.0                                                             
 * .. Q2min  for gamma p mode                                                    
-PYTHIA-Q2MIN    4.0                                                             
+PYTHIA-Q2MIN    10.0                                                             
 * .. Q2max  for multiple scattering                                             
 PYTHIA-Q2MAX    350.0                                                             
 *                                                                               
@@ -108,14 +108,6 @@ PYTHIA-MSTP     91              1
 *                                                                               
 * PYTHIA-CKIN     3            15.                                              
 PYTHIA-CKIN     3            2.5                                                
-*
-*Ian
-*C...Set minimum photon virtuality.
-PYTHIA-CKIN 65 4.0 
-*C...Set maximum photon virtuality.
-PYTHIA-CKIN 66 350. 
-*
-*
 * .. PTMIN for secondary scatters                                               
 * PYTHIA-PARP      81          2.                                               
 * .. The hard scale multiplied by this factor is the upper cut-off for          
@@ -188,12 +180,12 @@ PYTHIA-MSTP     58              5
 *     hjtcuts(7) = etamax/xpom                                                  
 *     hjtcuts(8) = operation(10)                                                
 *     hjtcuts(9) = xt                                                           
-*JTFILT-CUTSON    0  0  0  0  0  0  0  212 0                                     
-*JTFILT-CONES     1.                                                             
-*JTFILT-ETAMX     999.                                                           
-*JTFILT-CUT1     -8.   2.5  14. 999.                                             
-*JTFILT-CUT2      0. 999.    0.   1.                                             
-*JTFILT-CUT3      0. 999.    0.   1.                                             
-*JTFILT-CUT4      0. 999.                                                        
+JTFILT-CUTSON    0  0  0  0  0  0  0  212 0                                     
+JTFILT-CONES     1.                                                             
+JTFILT-ETAMX     999.                                                           
+JTFILT-CUT1     -8.   2.5  14. 999.                                             
+JTFILT-CUT2      0. 999.    0.   1.                                             
+JTFILT-CUT3      0. 999.    0.   1.                                             
+JTFILT-CUT4      0. 999.                                                        
 *                                                                               
 STOP                                                                            
