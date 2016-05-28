@@ -1,0 +1,534 @@
+1
+==========================================================
+*                                                        *
+*                    A M A D E U S                       *
+*          Zeus Interface to Event Generators            *
+*            - Amadeus comes before Mozart -             *
+*                                                        *
+*                                                        *
+*                v20010a December 2010                   *
+*                                                        *
+*                                                        *
+==========================================================
+
+ ADAMO/TAP version 3.3      with GAF version 3.2      starting
+
+
+ ZINTAP processes ZEBRA, ALL subsets in addition to Zeus wide subsets
+
+1
+
+
+
+        ===========================================================
+        *                                                         *
+        *             Z I N T A P   C O M P L E T E               *
+        *             =============================               *
+        *                                                         *
+        *    Zeus TAP Initialisation ........ Version 3.08 / 01   *
+        *                                      28 May 2002        *
+        *                                                         *
+        ===========================================================
+
+1
+
+
+
+        --------------------------------------------------------
+        *                                                      *
+        *                      M O M O                         *
+        *                      =======                         *
+        *                                                      *
+        *         Module Monitoring package initialised.       *
+        *                                                      *
+        * Pam:   Version   Release date                        *
+        ZRECON   3.07/12  10/02/97  16.35.06                      *
+        *                                                      *
+        --------------------------------------------------------
+
+        MOMOIN. Starts with root module: ZDIS    
+1
+
+
+
+        --------------------------------------------------------
+        *                                                      *
+        *                      K W I N                         *
+        *                      =======                         *
+        *                                                      *
+        *        Control card reading package called.          *
+        *             (Version 2, October 1992)                *
+        *                                                      *
+        *           Listing of control cards read              *
+        *           -----------------------------              *
+        *                                                      *
+        --------------------------------------------------------
+
+
+ *  ZDIS Run file for Pythia6                                                    
+ *                                                                               
+ * {Total number of events to process} Default = unlimitted                      
+ ZRLIMIT-NEVT  25000                                                             
+ * {Time limit}                        Default = 20 sec                          
+ ZRLIMIT-TLFT  40.                                                               
+ * output                                                                        
+ ZeusIO-OUFI      php_nondiff_res_9899                                           
+ ZeusIO-OOPT      MEDIUM=DISK,DRIVER=FZ,FILFOR=EXCH                              
+ ZeusIO-ODFL      FMCEvent                                                       
+ *                                                                               
+ * AMADEUS CARDS                                                                 
+ AMADEUS-INSTITUT   DESY                                                         
+ AMADEUS-GEN        PYTHIA6                                                      
+ * Set Charm and tau particles stable='T' or unstable='F'                        
+ AMADEUS-CHSTAB       T                                                          
+ * AMADEUS-VERTEX     0.  0.  0.  0.  0.  0.                                     
+ AMADEUS-RUNNUM       1                                                          
+ AMADEUS-RNDCHAIN     1                                                          
+ AMADEUS-AMADBG       0                                                          
+ USERS-DISLIST       10                                                          
+ *                                                                               
+ * PYTHIA CARDS                                                                  
+ * Lepton momentum                                                               
+ PYTHIA-EMMTM   -27.5                                                            
+ * Incoming lepton type 11=e- -11=e+                                             
+ PYTHIA-LEPIN   11                                                               
+ * Incoming Proton momentum                                                      
+ PYTHIA-PMMTM   920.                                                             
+ * Multiparton interactions                                                      
+ * gamma/e p mode with mi (RECOMMENDED)                                          
+ * PYTHIA-MSFLAG   4                                                             
+ PYTHIA-MSFLAG   0                                                               
+ * PYTHIA-MSFLAG   3                                                             
+ * .. Use Heracles for radiative corrections                                     
+ *    (only applies for gamma p mode)                                            
+ * 0 = off 1 = on                                                                
+ * PYTHIA-HSON   0                                                               
+ * .. Y range for multiple scattering                                            
+ PYTHIA-YMIN     0.01                                                            
+ * .. Y range for multiple scattering                                            
+ PYTHIA-YMAX     1.0                                                             
+ * .. Q2min  for gamma p mode                                                    
+ PYTHIA-Q2MIN    0.0                                                             
+ * .. Q2max  for multiple scattering                                             
+ PYTHIA-Q2MAX    4.0                                                             
+ *                                                                               
+ PYTHIA-MSEL     0                                                               
+ * (2) resolved prompt photon:                                                   
+ PYTHIA-MSUB   14  1                                                             
+ PYTHIA-MSUB   29  1                                                             
+ PYTHIA-MSTP   14  1                                                             
+ * e structure function                                                          
+ PYTHIA-MSTP   12  1                                                             
+ * Intrinsic Kt distribution in the photon *                                     
+ ************************************************************************        
+ ** KWIN **  Prefix longer than 8 characters - card above ignored
+ ** KWIN **  Prefix longer than 8 characters - card above ignored                
+ ** KWIN **  Prefix longer than 8 characters - card above ignored
+ * MSTP(93)                                                                      
+ * default = 1: Gaussian,         Width = PARP(99)  (default = 0.44 GeV/c)       
+ *                        Upper cut-off = PARP(100) (default = 2.0  GeV/c)       
+ *           2: Exponential,      Width = PARP(99)                               
+ *                        Upper cut-off = PARP(100)                              
+ *           3: Power like type,    kT0 = PARP(99)                               
+ *                        Upper cut-off = PARP(100)                              
+ *              eg) dkT^2 / ((kT0)^2 + (kT)^2)^2                                 
+ *           4: almost same as option 3                                          
+ *              eg) dkT^2 / ((kT0)^2 + (kT)^2)                                   
+ *           5: almost same as option 3                                          
+ *              eg) dkT^2 / ((kT0)^2 + (kT)^2)                                   
+ *              Note) difference between option 4 and 5                          
+ *                ==> upper kT cut-off given by pT of hard processes             
+ *                    or by PARP(100), whichever is smaller.                     
+ *                                                                               
+ * NOTE) for option 1 and 2 : PARP(100) is of monior importance, once            
+ *       PARP(100) >> PARP(99)                                                   
+ *       However, option 3 and 4 correspond to distribution with                 
+ *       infinite <kT^2> if kT spectrum is not cut-off, and therefore            
+ *       PARP(100) is as important for the overall distribution as is            
+ *       PARP(99).                                                               
+ ************************************************************************        
+ ** KWIN **  Prefix longer than 8 characters - card above ignored
+ ** KWIN **  Prefix longer than 8 characters - card above ignored                
+ ** KWIN **  Prefix longer than 8 characters - card above ignored
+ PYTHIA-MSTP     93              1                                               
+ * default width parameter of primordial Kt is 0.44. Use 0.66 instead:           
+ * PYTHIA-PARP     99              0.0                                           
+ * PYTHIA-PARP     100             0.0                                           
+ * ***********************************************************************       
+ * Intrinsic Kt distribution in the proton (Hadron)                              
+ * ***********************************************************************       
+ * MSTP(91)                                                                      
+ * default = 1: Gaussian,         Width = PARP(91) (default = 0.44 GeV)          
+ *                        Upper cut-off = PARP(93) (default = 2.0  GeV)          
+ *           2: Exponential,      Width = PARP(92) (default = 0.2 GeV)           
+ *                              cut-off = PARP(93) (default = 2.0 GeV)           
+ * *************************************************************************     
+ PYTHIA-MSTP     91              1                                               
+ * PYTHIA-PARP     91              0.0                                           
+ * PYTHIA-PARP     93              0.0                                           
+ * **********************************************************************        
+ *                                                                               
+ *                                                                               
+ * PYTHIA-CKIN     3            15.                                              
+ PYTHIA-CKIN     3            2.5                                                
+ * .. PTMIN for secondary scatters                                               
+ * PYTHIA-PARP      81          2.                                               
+ * .. The hard scale multiplied by this factor is the upper cut-off for          
+ *    initial state parton showers. In versions before 6.139 the default         
+ *    was 4. In 6.139 and after it is changed to to 1. This value does not       
+ *    describe HERA gp data as well as the previous one, so we reset it.         
+ PYTHIA-PARP      67      4.0                                                    
+ * .. Choice of the proton structure function                                    
+ * 1000*NGROUP + NSET     5005=GRV94 LO,                                         
+ *                        4029=CTEQ 3L LO                                        
+ *                        4032=CTEQ 4L LO                                        
+ *                        3037=MRSA                                              
+ *                        4034=CTEQ4M                                            
+ PYTHIA-MSTP     51              4034                                            
+ * PYTHIA-MSTP     51              3037                                          
+ * Use pdflib 7.09                                                               
+ PYTHIA-MSTP     52              2                                               
+ * .. Choice of number of flavours                                               
+ PYTHIA-MSTP     58              5                                               
+ *                                                                               
+ * .. Choice of the photon structure function                                    
+ * 1000*NGROUP + NSET            GRV G LO=5003                                   
+ *                               SaS1D   =9001                                   
+ *                               SaS2D   =9003                                   
+ *                               WHIT2   =8002                                   
+ *                               GRVHO   =5002                                   
+ PYTHIA-MSTP     55              5002                                            
+ * PYTHIA-MSTP     55              5003                                          
+ * Use pdflib 7.09                                                               
+ PYTHIA-MSTP     56              2                                               
+ *                                                                               
+ * old PYTHIA cards                                                              
+ * PYTHIA-SCAT       0                                                           
+ * PYTHIA-MSTJ     50               3                                            
+ * PYTHIA-MSTP      2               1                                            
+ * PYTHIA-MSTP     11               1                                            
+ * PYTHIA-MSTP     12               1                                            
+ * PYTHIA-MSTP     13               2                                            
+ * PYTHIA-PARP     13               4.                                           
+ * PYTHIA-MSTP     32               2                                            
+ * PYTHIA-MSTP     61               1                                            
+ * PYTHIA-MSTP     71               1                                            
+ * PYTHIA-MSTP     91               1                                            
+ * PYTHIA-MSTP     92               4                                            
+ * PYTHIA-MSTP     93               1                                            
+ * PYTHIA-MSTP    111               1                                            
+ *                                                                               
+ * new defaults                                                                  
+ * PYTHIA-PARP     91               0.44                                         
+ * PYTHIA-PARP     92               0.20                                         
+ * PYTHIA-PARP     93               2.                                           
+ * PYTHIA-PARP     99               0.44                                         
+ * PYTHIA-PARP    100               2.                                           
+ *                                                                               
+ *                                                                               
+ * CG FILTER CARDS                                                               
+ *     hjtcuts(1) = cone/kt                                                      
+ *     hjtcuts(2) = inclusive jets                                               
+ *     hjtcuts(3) = dijets                                                       
+ *     hjtcuts(4) = three jets                                                   
+ *     hjtcuts(5) = dijet mass                                                   
+ *     hjtcuts(6) = three-jet mass                                               
+ *     hjtcuts(7) = etamax/xpom                                                  
+ *     hjtcuts(8) = operation(10)                                                
+ *     hjtcuts(9) = xt                                                           
+ JTFILT-CUTSON    0  0  0  0  0  0  0  212 0                                     
+ JTFILT-CONES     1.                                                             
+ JTFILT-ETAMX     999.                                                           
+ JTFILT-CUT1     -8.   2.5  14. 999.                                             
+ JTFILT-CUT2      0. 999.    0.   1.                                             
+ JTFILT-CUT3      0. 999.    0.   1.                                             
+ JTFILT-CUT4      0. 999.                                                        
+ *                                                                               
+ STOP                                                                            
+ KWIN input completed;    41 control cards accepted
+
+                    ***********************
+                    *** KWIFET: Warning ***
+                    ***********************
+
+ Use of KWFFGO instead of KWIFET is recommended since this allows selection
+ on KWIN prefixes in order to avoid problems with ambiguous keywords, e.g.
+
+          CALL KWFFGO ('ZRLIMIT',IERR)
+
+
+ ** KWNEXT **    41 cards skipped since keywords not defined by calling FFKEY
+
+ |------------------------------------------------------------------------------------------------------------------|
+ | Table: ZETDFL                                                                                          ADAMO/TAP |
+ | Count:  0                                                                                                        |
+ | Page (  1,  1)                                                                                                   |
+ | Printed along:  ID [MINC,MAXC]                                                                                   |
+ |------------------------------------------------------------------------------------------------------------------|
+ |ID  |GAFT|DFLNO|DflNAM(1)                       |(2)                             |(3)                             |
+ |----|----|-----|--------------------------------|--------------------------------|--------------------------------|
+ |------------------------------------------------------------------------------------------------------------------|
+ |-------------------------------------------------------------------------------------------------------|
+ | Table: ZETDFL                                                                                         |
+ | Page (  2,  1)                                                                                        |
+ |-------------------------------------------------------------------------------------------------------|
+ |ID  |(4)                             |(5)                             |(6)                             |
+ |----|--------------------------------|--------------------------------|--------------------------------|
+ |-------------------------------------------------------------------------------------------------------|
+ |-------------------------------------------------------------------------------------------------------|
+ | Table: ZETDFL                                                                                         |
+ | Page (  3,  1)                                                                                        |
+ |-------------------------------------------------------------------------------------------------------|
+ |ID  |(7)                             |(8)                             |(9)                             |
+ |----|--------------------------------|--------------------------------|--------------------------------|
+ |-------------------------------------------------------------------------------------------------------|
+ |-------------------------------------------|
+ | Table: ZETDFL                             |
+ | Page (  4,  1)                            |
+ |-------------------------------------------|
+ |ID  |(10)                            |     |
+ |----|--------------------------------|     |
+ |-------------------------------------------|
+                 Input Bit Selection Masks 
+                    ------------------- 
+      Bits     01234567890123456789012345678901
+ ---------------------------------------------------
+     TSTAM11   --------------------------------
+     TSTAM12   --------------------------------
+     TSTAM21   --------------------------------
+     TSTAM22   --------------------------------
+   KEY1  - O ,( Logical OR of all O bits accepted)
+   KEY2  - A , These bits must be set 
+   KEY3  - N , These bits must NOT be set
+ LOGIC: accept = KEY1 AND KEY2 AND KEY3 
+                Output Bit Selection Masks 
+                -------------------------- 
+      Bits     01234567890123456789012345678901
+ ---------------------------------------------------
+     TSTAM11   --------------------------------
+     TSTAM12   --------------------------------
+     TSTAM21   --------------------------------
+     TSTAM22   --------------------------------
+   KEY1  - O ,( Logical OR of all O bits accepted)
+   KEY2  - A , These bits must be set 
+   KEY3  - N , These bits must NOT be set
+ LOGIC: accept = KEY1 AND KEY2 AND KEY3 
+1
+
+
+
+        ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        *                                                    *
+        *                       Z R I O                      *
+        *             ZEPHYR I/O package initialization      *
+        *                  successfully started              *
+        *                       in ZIOINI                    *
+        *                                                    *
+        * Pam:   Version   Release date                      *
+        ZRECON   3.07/12  10/02/97  16.35.06                      *
+        *                                                    *
+        *                      R. Glaeser                    *
+        ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+   ====== Creation of new output GAF ====================
+          GAF reference      :          1
+          GAF Name(1)        : php_nondiff_res_9899                                            
+          GAF Name(2)        :                                                                 
+          GAF option(1)      : MEDIUM=DISK,DRIVER=FZ,FILFOR=EXCH                               
+          GAF option(2)      :                                                                 
+          CREGAF error code  :          0
+   ======================================================
+     
+  
+0
+
+
+
+        ------------------------------------------------------
+        *                                                    *
+        *                   Z R I O : ZIOINI                 *
+        *             Inititalization of I/O files/GAF"s     *
+        *                      successful                    *
+        *                                                    *
+        ------------------------------------------------------
+
+1
+
+
+
+        ------------------------------------------------------
+        *                                                    *
+        *                    Z D G A F                       *
+        *              Initialize Direct Access in           *
+        *                   Z E P H Y R                      *
+        *                                                    *
+        *         ZDIN: read in default file catalogue       *
+        *                                                    *
+        * Pam:   Version   Release date                      *
+        ZRECON   3.07/12  10/02/97  16.35.06                      *
+        *                                                    *
+        *                    E. Tscheslog                    *
+        ------------------------------------------------------
+
+ ZDIN: loads default catalogue from:
+       /zeus/pro/gaf/zdd_load.rz
+ !ADAMO/TAP/OPEGAF/Run-time error  GAF                  : /zeus/pro/gaf/zdd_load
+ !                                 I/O                  : File does not exist
+ !-------------------------------> GAF gives I/O problem
+
+
+
+
+        AMADEUS. Error from AMADEI code =   6
++       *                  0   events generated.                   *
+        *              25000   events requested.                   *
+        *                                                          *
+        ============================================================
+
+ |---------------------------------------------------------------------|
+ | Table: ZROUTP                                             ADAMO/TAP |
+ | Count:  2                                                           |
+ | Page (  1,  1)                                                      |
+ | Printed along:  ID [MINC,MAXC]                                      |
+ |---------------------------------------------------------------------|
+ |ID  |Name(1)                                                         |
+ |----|----------------------------------------------------------------|
+ |   1|php_nondiff_res_9899                                            |
+ |   2|SUMMARY                                                         |
+ |---------------------------------------------------------------------|
+ |----------------------------------------------------------------------------------------------------------------------------|
+ | Table: ZROUTP                                                                                                              |
+ | Page (  2,  1)                                                                                                             |
+ |----------------------------------------------------------------------------------------------------------------------------|
+ |ID  |(2)                                                             |IOF  |EOF |NWREC     |NSWREC    |NWHEAD    |NSWHEA    |
+ |----|----------------------------------------------------------------|-----|----|----------|----------|----------|----------|
+ |   1|                                                                |    1|   F|         0|         0|         0|         0|
+ |   2|                                                                |   -1|   F|         0|         0|         0|         0|
+ |----------------------------------------------------------------------------------------------------------------------------|
+ |-----------------------------------------------------------------|
+ | Table: ZROUTP                                                   |
+ | Page (  3,  1)                                                  |
+ |-----------------------------------------------------------------|
+ |ID  |NWBODY    |NSWBOD    |NWEVT     |NSWEVT    |NSKIP     #ZOUOP|
+ |----|----------|----------|----------|----------|----------#-----|
+ |   1|         0|         0|         0|         0|         0#    1|
+ |   2|         0|         0|         0|         0|         0#=====|
+ |-----------------------------------------------------------------|
+ |---------------------------------------------------------------------|
+ | Table: ZOUOPT                                             ADAMO/TAP |
+ | Count:  1                                                           |
+ | Page (  1,  1)                                                      |
+ | Printed along:  ID [MINC,MAXC]                                      |
+ |---------------------------------------------------------------------|
+ |ID  |option(1)                                                       |
+ |----|----------------------------------------------------------------|
+ |   1|MEDIUM=DISK,DRIVER=FZ,FILFOR=EXCH                               |
+ |---------------------------------------------------------------------|
+ |---------------------------------------------------------------------|
+ | Table: ZOUOPT                                                       |
+ | Page (  2,  1)                                                      |
+ |---------------------------------------------------------------------|
+ |ID  |(2)                                                             |
+ |----|----------------------------------------------------------------|
+ |   1|                                                                |
+ |---------------------------------------------------------------------|
+ |---------------------------------------------------------------------------------------------------------------------------|
+ | Table: ZOUDFL                                                                                                   ADAMO/TAP |
+ | Count:  1                                                                                                                 |
+ | Page (  1,  1)                                                                                                            |
+ | Printed along:  ID [MINC,MAXC]                                                                                            |
+ |---------------------------------------------------------------------------------------------------------------------------|
+ |ID  |DflSel(1)       |(2)             |(3)             |(4)             |(5)             |(6)             |(7)             |
+ |----|----------------|----------------|----------------|----------------|----------------|----------------|----------------|
+ |   1|HEAD            |FMCEvent        |                |                |                |                |                |
+ |---------------------------------------------------------------------------------------------------------------------------|
+ |----------------------------------------------------------------------------------------------|
+ | Table: ZOUDFL                                                                                |
+ | Page (  2,  1)                                                                               |
+ |----------------------------------------------------------------------------------------------|
+ |ID  |(8)             |(9)             |(10)            |Ndfl      |NWREC     |NSWREC    #ZROUT|
+ |----|----------------|----------------|----------------|----------|----------|----------#-----|
+ |   1|                |                |                |         2|         0|         0#    1|
+ |----------------------------------------------------------------------------------------------|
+ |---------------------------------------------------------------------------------------------------------------------------|
+ | Table: ZOURCD                                                                                                   ADAMO/TAP |
+ | Count:  1                                                                                                                 |
+ | Page (  1,  1)                                                                                                            |
+ | Printed along:  ID [MINC,MAXC]                                                                                            |
+ |---------------------------------------------------------------------------------------------------------------------------|
+ |ID  |RcdSel(1)       |(2)             |(3)             |(4)             |(5)             |(6)             |(7)             |
+ |----|----------------|----------------|----------------|----------------|----------------|----------------|----------------|
+ |   1|HDR             |EVT             |BOR             |EOR             |ENV             |TST             |JOBH            |
+ |---------------------------------------------------------------------------------------------------------------------------|
+ |----------------------------------------------------------------------------------------------|
+ | Table: ZOURCD                                                                                |
+ | Page (  2,  1)                                                                               |
+ |----------------------------------------------------------------------------------------------|
+ |ID  |(8)             |(9)             |(10)            |Nrcd      |NWREC     |NSWREC    #ZROUT|
+ |----|----------------|----------------|----------------|----------|----------|----------#-----|
+ |   1|                |                |                |         7|         0|         0#    1|
+ |----------------------------------------------------------------------------------------------|
+ ZRTERM: all files opened by ZDFET closed now
+
+
+AMADEO. Random number seeds at end of processing:               0               0
+1********* PYSTAT:  Statistics on Number of Events and Cross-sections *********
+
+ ==============================================================================
+ I                                  I                            I            I
+ I            Subprocess            I      Number of points      I    Sigma   I
+ I                                  I                            I            I
+ I----------------------------------I----------------------------I    (mb)    I
+ I                                  I                            I            I
+ I N:o Type                         I    Generated         Tried I            I
+ I                                  I                            I            I
+ ==============================================================================
+ I                                  I                            I            I
+ I   0 All included subprocesses    I            0             0 I  0.000D+00 I
+ I                                  I                            I            I
+ ==============================================================================
+
+ ********* Total number of errors, excluding junctions =        0 *************
+ ********* Total number of errors, including junctions =        0 *************
+ ********* Total number of warnings =                           0 *************
+ ********* Fraction of events that fail fragmentation cuts =  1.00000 *********
+
+         o-------------------------------------------------o
+         |   Total cross section estimate (PARL(24))       |
+         |                     0.0000pb                    |
+         o-------------------------------------------------o
+
+  PDFLIB : Summary from PDFSTA
+  Nptype = 0  Ngroup =  0  Nset =   0  Name  = "        "  CrMode =   0
+  Nfl    =  0,  LO = 0,  Tmas =    0.00 GeV/c**2
+  QCDL4  =  0.0000 GeV,  QCDL5 =  0.0000 GeV
+  Xmin   =  0.00E+00,    Xmax = 0.00000E+00
+  Q2min  =  0.000 (GeV/c)**2,  Q2max = 0.00E+00 (GeV/c)**2
+ 
+  PDFSTA:    NO errors occured
+ *** Track Cuts:***********
+ *   Nevt before trk cut =           0
+ *   Nevt after  trk cut =           0
+ *   Red. Fact.  trk cut =   0.0000000    
+ ***************************
+        ---------------------------------------------
+              Filter summary: Events Passed   =          0
+                              out of a total of          0
+                   giving a reduction factor of    -1.000000
+        ------------------------------------------------
+
+ MZEND.   Usage statistics for  1 dynamic stores.
+
+   Map of store  0 TAPmem  
+   ------------------------
+
+   Division                                        Number of times
+              Kind                Max-size                Garb-coll.
+            Mode    Position      used   allowed   Wiped  user  auto Pushd Redcd
+
+    1 QDIV1    0 1         1       444   8499988       0     0     0     0     0
+    2 QDIV2    1 1   8498715   1885503   8499988       0     0     0     0     0
+   20 system   1 8   8499988      1233   8499988       0     0     0     0     0

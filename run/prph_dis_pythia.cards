@@ -1,0 +1,191 @@
+*  ZDIS Run file for Pythia6                                                    
+*
+* {Total number of events to process} Default = unlimitted                      
+ZRLIMIT-NEVT  25000                                                             
+* {Time limit}                        Default = 20 sec                          
+ZRLIMIT-TLFT  40.                                                               
+* output                                                                        
+ZeusIO-OUFI      prph_dis_pythia                                
+ZeusIO-OOPT      MEDIUM=DISK,DRIVER=FZ,FILFOR=EXCH                              
+ZeusIO-ODFL      FMCEvent                                                       
+*                             
+* Use local version of particle tables.
+ZDIN-PATH ./
+ZDIN-CAT  ./zdd_load.rz
+*                                                                
+* AMADEUS CARDS                                                                 
+AMADEUS-INSTITUT   DESY                                                         
+AMADEUS-GEN        PYTHIA6                                                      
+* Set Charm and tau particles stable='T' or unstable='F'                        
+AMADEUS-CHSTAB       T                                                          
+* AMADEUS-VERTEX     0.  0.  0.  0.  0.  0.                                     
+AMADEUS-RUNNUM       1                                                          
+AMADEUS-RNDCHAIN     1                                                          
+AMADEUS-AMADBG       0                                                          
+USERS-DISLIST       10                                                          
+*                                                                               
+* PYTHIA CARDS                                                                  
+* Lepton momentum                                                               
+PYTHIA-EMMTM   -27.5                                                            
+* Incoming lepton type 11=e- -11=e+                                             
+PYTHIA-LEPIN   11                                                               
+* Incoming Proton momentum                                                      
+PYTHIA-PMMTM   920.                                                             
+* PYTHIA-PMMTM   820.                                                           
+* Multiparton interactions                                                      
+* gamma/e p mode with mi (RECOMMENDED)                                          
+* PYTHIA-MSFLAG   4                                                             
+* PYTHIA-MSFLAG   0       
+*MSFLAG is 2 for dir and 0 for res photoproduction                                                      
+PYTHIA-MSFLAG   2                                                               
+* .. Use Heracles for radiative corrections                                     
+*    (only applies for gamma p mode)                                            
+* 0 = off 1 = on                                                                
+* PYTHIA-HSON   0                                                               
+* .. Y range for multiple scattering                                            
+PYTHIA-YMIN     0.01                                                            
+* .. Y range for multiple scattering                                            
+PYTHIA-YMAX     1.0                                                             
+* .. Q2min  for gamma p mode                                                    
+PYTHIA-Q2MIN    10.0                                                             
+* .. Q2max  for multiple scattering                                             
+PYTHIA-Q2MAX    350.0                                                             
+*                                                                               
+PYTHIA-MSEL     0                                                               
+* (1) direct prompt photon:                                                     
+*PYTHIA-MSUB   34  1   
+* prompt photon in DIS                                                            
+PYTHIA-MSUB 133 1 
+PYTHIA-MSUB 134 1   
+*a photon is assumed to be point-like so 0 for dir and 1 for res
+PYTHIA-MSTP   14  0                                                         
+* Intrinsic Kt distribution in the photon *                                     
+************************************************************************        
+** KWIN **  Prefix longer than 8 characters - card above ignored
+* MSTP(93)                                                                      
+* default = 1: Gaussian,         Width = PARP(99)  (default = 0.44 GeV/c)       
+*                        Upper cut-off = PARP(100) (default = 2.0  GeV/c)       
+*           2: Exponential,      Width = PARP(99)                               
+*                        Upper cut-off = PARP(100)                              
+*           3: Power like type,    kT0 = PARP(99)                               
+*                        Upper cut-off = PARP(100)                              
+*              eg) dkT^2 / ((kT0)^2 + (kT)^2)^2                                 
+*           4: almost same as option 3                                          
+*              eg) dkT^2 / ((kT0)^2 + (kT)^2)                                   
+*           5: almost same as option 3                                          
+*              eg) dkT^2 / ((kT0)^2 + (kT)^2)                                   
+*              Note) difference between option 4 and 5                          
+*                ==> upper kT cut-off given by pT of hard processes             
+*                    or by PARP(100), whichever is smaller.                     
+*                                                                               
+* NOTE) for option 1 and 2 : PARP(100) is of monior importance, once            
+*       PARP(100) >> PARP(99)                                                   
+*       However, option 3 and 4 correspond to distribution with                 
+*       infinite <kT^2> if kT spectrum is not cut-off, and therefore            
+*       PARP(100) is as important for the overall distribution as is            
+*       PARP(99).                                                               
+************************************************************************        
+** KWIN **  Prefix longer than 8 characters - card above ignored
+*this is uncommented for res photoproduction and off commented dir
+* PYTHIA-MSTP     93              1                                             
+* default width parameter of primordial Kt is 0.44. Use 0.66 instead:           
+* PYTHIA-PARP     99              0.0                                           
+* PYTHIA-PARP     100             0.0                                           
+* ***********************************************************************       
+* Intrinsic Kt distribution in the proton (Hadron)                              
+* ***********************************************************************       
+* MSTP(91)                                                                      
+* default = 1: Gaussian,         Width = PARP(91) (default = 0.44 GeV)          
+*                        Upper cut-off = PARP(93) (default = 2.0  GeV)          
+*           2: Exponential,      Width = PARP(92) (default = 0.2 GeV)           
+*                              cut-off = PARP(93) (default = 2.0 GeV)           
+* *************************************************************************     
+PYTHIA-MSTP     91              1                                               
+* PYTHIA-PARP     91              0.0                                           
+* PYTHIA-PARP     93              0.0                                           
+* **********************************************************************        
+*                                                                               
+*                                                                               
+* PYTHIA-CKIN     3            15.                                              
+PYTHIA-CKIN     3            2.5                                                
+* .. PTMIN for secondary scatters                                               
+* PYTHIA-PARP      81          2.                                               
+* .. The hard scale multiplied by this factor is the upper cut-off for          
+*    initial state parton showers. In versions before 6.139 the default         
+*    was 4. In 6.139 and after it is changed to to 1. This value does not       
+*    describe HERA gp data as well as the previous one, so we reset it.       
+*THIS IS PHOTOPRODUCTION ONLY  
+*PYTHIA-PARP      67      4.0                                                    
+* .. Choice of the proton structure function                                    
+* 1000*NGROUP + NSET     5005=GRV94 LO,                                         
+*                        4029=CTEQ 3L LO                                        
+*                        4032=CTEQ 4L LO                                        
+*                        3037=MRSA                                              
+*                        4034=CTEQ4M                                            
+PYTHIA-MSTP     51              4034                                            
+* PYTHIA-MSTP     51              3037                                          
+* Use pdflib 7.09                                                               
+PYTHIA-MSTP     52              2                                               
+* .. Choice of number of flavours                                               
+PYTHIA-MSTP     58              5                                               
+*                                                                               
+* .. Choice of the photon structure function                                    
+* 1000*NGROUP + NSET            GRV G LO=5003                                   
+*                               SaS1D   =9001                                   
+*                               SaS2D   =9003                                   
+*                               WHIT2   =8002                                   
+*                               GRVHO   =5002                                   
+* PYTHIA-MSTP     55              5002                                          
+* PYTHIA-MSTP     55              5003                                          
+* Use pdflib 7.09                                                               
+* PYTHIA-MSTP     56              2                                             
+*                                                                               
+* .. Determine the photon kinematics:                                           
+* Use the EPA formula         this is uncom for dir PHP not for DIS                                                  
+*PYTHIA-MSTP     13               2                                              
+* Q^2 max scale for photoproduction when using option MSTP(13)        this is uncom for dir PHP not for DIS                  
+*PYTHIA-PARP     13               4.                                             
+*                                                                               
+* old PYTHIA cards                                                              
+* PYTHIA-SCAT       0                                                           
+* PYTHIA-MSTJ     50               3                                            
+* PYTHIA-MSTP      2               1                                            
+* PYTHIA-MSTP     11               1                                            
+* PYTHIA-MSTP     12               1                                            
+* PYTHIA-MSTP     13               2                                            
+* PYTHIA-PARP     13               4.                                           
+* PYTHIA-MSTP     32               2                                            
+* PYTHIA-MSTP     61               1                                            
+* PYTHIA-MSTP     71               1                                            
+* PYTHIA-MSTP     91               1                                            
+* PYTHIA-MSTP     92               4                                            
+* PYTHIA-MSTP     93               1                                            
+* PYTHIA-MSTP    111               1                                            
+*                                                                               
+* new defaults                                                                  
+* PYTHIA-PARP     91               0.44                                         
+* PYTHIA-PARP     92               0.20                                         
+* PYTHIA-PARP     93               2.                                           
+* PYTHIA-PARP     99               0.44                                         
+* PYTHIA-PARP    100               2.                                           
+*                                                                               
+*                                                                               
+* CG FILTER CARDS                                                               
+*     hjtcuts(1) = cone/kt                                                      
+*     hjtcuts(2) = inclusive jets                                               
+*     hjtcuts(3) = dijets                                                       
+*     hjtcuts(4) = three jets                                                   
+*     hjtcuts(5) = dijet mass                                                   
+*     hjtcuts(6) = three-jet mass                                               
+*     hjtcuts(7) = etamax/xpom                                                  
+*     hjtcuts(8) = operation(10)                                                
+*     hjtcuts(9) = xt                                                           
+JTFILT-CUTSON    0  0  0  0  0  0  0  212 0                                     
+JTFILT-CONES     1.                                                             
+JTFILT-ETAMX     999.                                                           
+JTFILT-CUT1     -8.   2.5  14. 999.                                             
+JTFILT-CUT2      0. 999.    0.   1.                                             
+JTFILT-CUT3      0. 999.    0.   1.                                             
+JTFILT-CUT4      0. 999.                                                        
+*                                                                               
+STOP                                                                            

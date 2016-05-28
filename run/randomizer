@@ -1,0 +1,17 @@
+#!/bin/sh -f
+# Here random seeds generation begins
+RANGE=10000
+a=$(date +%N )
+echo $CARD
+rm -f fort.7
+rm -f fort.11
+rm -f fort.9
+rm -f fort.10
+number=$RANDOM
+let "number=number/$RANGE"
+sleep $number
+b=$(date +%N)
+rm -f amadeus.rndm
+echo $a $b > amadeus.rndm
+echo "done with randomizer"
+#<- Here is random seed generation ends. We wrote the seeds to amadeus.rndm

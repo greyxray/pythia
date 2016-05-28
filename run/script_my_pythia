@@ -1,0 +1,107 @@
+#!/bin/bash
+
+Nfiles=10
+
+nameFz=
+nameZdi=
+mkdir /nfs/dust/zeus/group/glushenko/pythia/pythia_$Nfiles
+nfspass=/nfs/dust/zeus/group/glushenko/pythia/pythia_$Nfiles/
+
+loop_up ()
+{
+	return $(($1 + $2 ))
+}
+
+loop ()
+{
+	let "leading_zeros=${#Nfiles}"
+	leading_zeros=%0$leading_zeros"g"
+	echo $leading_zeros
+
+	#for i in $(seq -w $1 $2)
+    for i in $(seq -f $leading_zeros $1 $2)
+	do
+		echo "file number $i    from $Nfiles"
+		nameFz=$3.h25125.8b.prph_dis_pyt64_2005_$i
+		echo $nameFz.zdi
+		nameZdi=$nameFz.zdi
+		./run_pythia6 prph_dis_pythia
+		echo $nfspass$nameFz
+		mv prph_dis_pythia $nfspass$nameFz
+		gzip -f $nfspass$nameFz
+		echo $nfspass$nameZdi
+		mv prph_dis_pythia.log $nfspass$nameZdi
+	done 	
+}
+
+set1=`echo - | awk '{print 12.07}'`
+set2=`echo - | awk '{print 57.97317437}'`
+set3=`echo - | awk '{print 29.95529061}'`
+
+#Nfiles = n1 + n2 + n3
+n1=`echo - | awk "{print $Nfiles * $set1 / 100}" OFMT="%.0f"`
+n2=`echo - | awk "{print $Nfiles * $set2 / 100}" OFMT="%.0f"`
+n3=`echo - | awk "{print $Nfiles * $set3 / 100}" OFMT="%.0f"`
+echo $n1 $n2 $n3
+echo "Testing the sum"
+if [[ $(($n1+$n2+$n3)) != $((Nfiles)) ]]
+then
+  echo "n1 + n2 + n3 != Nfiles"
+  exit 0 
+fi
+
+from=1
+prev=0
+loop_up $n1 $prev
+m=$?
+echo "first cycle $from .. $m"
+loop $from $m dsbf25
+#....
+let "from=$m+1"
+prev=$m
+loop_up $n2 $prev
+m=$?
+echo "second cycle $from .. $m"
+loop $from $m dsne25
+#....
+let "from=$m+1"
+prev=$m
+loop_up $n3 $prev
+m=$?
+echo "third cycle $from .. $m"
+loop $from $m dsme25
+
+#12.07%
+# for (( i=1;i<=5;i++ )); do
+# echo "file number $i    from 10"
+# nameFz=dsbf25.h25125.8b.prph_dis_pyt64_2005_0$i
+# nameZdi=$nameFz.zdi
+# ./run_pythia6 prph_dis_pythia
+# mv prph_dis_pythia $nfspass$nameFz
+# gzip $nfspass$nameFz
+# mv prph_dis_pythia.log $nfspass$nameZdi
+# done 	
+# 
+# #57.97317437%
+# for (( i=6;i<=28;i++ )); do
+# echo "file number $i    from 10"
+# nameFz=dsne25.h25125.8b.prph_dis_pyt64_2005_0$i
+# #8iq819.h22795.8b.php_res_pyt64_9899_0$i
+# nameZdi=$nameFz.zdi
+# ./run_pythia6 prph_dis_pythia
+# mv prph_dis_pythia $nfspass$nameFz
+# gzip $nfspass$nameFz
+# mv prph_dis_pythia.log $nfspass$nameZdi
+# done
+# 
+# #29.95529061%
+# for (( i=29;i<=40;i++ )); do
+# echo "file number $i    from 10"
+# nameFz=dsme25.h25125.8b.prph_dis_pyt64_2005_0$i
+# nameZdi=$nameFz.zdi
+# ./run_pythia6 prph_dis_pythia
+# mv prph_dis_pythia $nfspass$nameFz
+# gzip $nfspass$nameFz
+# mv prph_dis_pythia.log $nfspass$nameZdi
+# done
+

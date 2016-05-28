@@ -1,0 +1,17 @@
+#!/bin/bash
+
+nameFz=
+nameZdi=
+
+for (( i=1;i<=10;i++ )); do
+echo "file number $i    from 10"
+# nameFz=8iq819.h22795.8b.php_res_pyt64_9899$(echo "scale=3; $i/1000.0" | bc)
+nameFz=8iq819.h22795.8b.php_res_pyt64_9899_0$i
+nameZdi=$nameFz.zdi
+./run_pythia6 php_nondiff_res_9899
+mv php_nondiff_res_9899 $nameFz
+gzip $nameFz
+mv php_nondiff_res_9899.log $nameZdi
+done 	
+
+
