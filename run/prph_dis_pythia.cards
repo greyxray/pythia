@@ -22,7 +22,7 @@ AMADEUS-CHSTAB       T
 AMADEUS-RUNNUM       1                                                          
 AMADEUS-RNDCHAIN     1                                                          
 AMADEUS-AMADBG       0                                                          
-USERS-DISLIST       10                                                          
+*****TEST_OFF*****USERS-DISLIST       10                                                          
 *                                                                               
 * PYTHIA CARDS                                                                  
 * Lepton momentum                                                               
@@ -43,13 +43,13 @@ PYTHIA-PMMTM   920.
 * 0 = off 1 = on                                                                
 * PYTHIA-HSON   0                                                               
 * .. Y range for multiple scattering                                            
-PYTHIA-YMIN     0.01                                                            
+*****TEST_OFF*****PYTHIA-YMIN     0.01                                                            
 * .. Y range for multiple scattering                                            
-PYTHIA-YMAX     1.0                                                             
+*****TEST_OFF*****PYTHIA-YMAX     1.0                                                             
 * .. Q2min  for gamma p mode                                                    
-PYTHIA-Q2MIN    4.0                                                             
+*****TEST_OFF*****PYTHIA-Q2MIN    4.0                                                             
 * .. Q2max  for multiple scattering                                             
-PYTHIA-Q2MAX    350.0    
+*****TEST_OFF*****PYTHIA-Q2MAX    350.0    
 *Ian  
 *C...Set minimal and maximal W.
 * 		CKIN(77)=5D0 ! was 50
@@ -65,7 +65,7 @@ PYTHIA-MSEL     0
 PYTHIA-MSUB 133 1 
 PYTHIA-MSUB 134 1   
 *a photon is assumed to be point-like so 0 for dir and 1 for res
-PYTHIA-MSTP   14  0                                                         
+*****TEST_OFF*****PYTHIA-MSTP   14  0                                                         
 * Intrinsic Kt distribution in the photon *                                     
 ************************************************************************        
 ** KWIN **  Prefix longer than 8 characters - card above ignored
@@ -107,7 +107,7 @@ PYTHIA-MSTP   14  0
 *           2: Exponential,      Width = PARP(92) (default = 0.2 GeV)           
 *                              cut-off = PARP(93) (default = 2.0 GeV)           
 * *************************************************************************     
-PYTHIA-MSTP     91              1                                               
+*****TEST_OFF*****PYTHIA-MSTP     91              1                                               
 * PYTHIA-PARP     91              0.0                                           
 * PYTHIA-PARP     93              0.0                                           
 * **********************************************************************        
@@ -138,6 +138,11 @@ PYTHIA-CKIN     73            0.0002470355731
 PYTHIA-CKIN 65 4.0 
 *C...Set maximum photon virtuality.
 PYTHIA-CKIN 66 350. 
+*C...Set minimum photon virtuality.
+*      CKIN(65)=10D0 ! was 35
+*C...Set maximum photon virtuality.
+*c      CKIN(66)=4D0
+
 *
 *
 * .. PTMIN for secondary scatters                                               
@@ -153,13 +158,18 @@ PYTHIA-CKIN 66 350.
 *                        4029=CTEQ 3L LO                                        
 *                        4032=CTEQ 4L LO                                        
 *                        3037=MRSA                                              
-*                        4034=CTEQ4M                                            
-PYTHIA-MSTP     51              4034                                            
+*                        4034=CTEQ4M    
+*     IAN
+*c     for LHAPDF ***************************
+*      MSTP(51)=10100  ! CTEQ6.1
+*      MSTP(52)=2                                        
+*****PYTHIA-MSTP     51              4034                                            
+PYTHIA-MSTP     51              10100                                            
 * PYTHIA-MSTP     51              3037                                          
 * Use pdflib 7.09                                                               
 PYTHIA-MSTP     52              2                                               
 * .. Choice of number of flavours                                               
-PYTHIA-MSTP     58              5                                               
+*****TEST_OFF*****PYTHIA-MSTP     58              5                                               
 *                                                                               
 * .. Choice of the photon structure function                                    
 * 1000*NGROUP + NSET            GRV G LO=5003                                   
